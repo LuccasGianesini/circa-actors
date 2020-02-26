@@ -1,10 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Circa.Actors.Application\Circa.Actors.Application.csproj" />
+    <ProjectReference Include="..\Circa.Actors.Domain\Circa.Actors.Domain.csproj" />
+    <ProjectReference Include="..\Circa.Actors.Infra\Circa.Actors.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="dm" />
   </ItemGroup>
 
 </Project>

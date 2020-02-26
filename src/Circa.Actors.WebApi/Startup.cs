@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Solari.Callisto;
+using Solari.Sol;
+using Solari.Titan.DependencyInjection;
 
 namespace Circa.Actors.WebApi
 {
@@ -26,6 +29,10 @@ namespace Circa.Actors.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSol(Configuration)
+                    .AddTitan()
+                    .AddCallisto(a => a.RegisterDefaultClassMaps()
+                                       .RegisterDefaultConventionPack());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
