@@ -4,4 +4,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Circa.Actors.Domain\Circa.Actors.Domain.csproj" />
+      <ProjectReference Include="..\Circa.Actors.Infra\Circa.Actors.Infra.csproj" />
+      <ProjectReference Include="..\Circa.Actors.Service\Circa.Actors.Service.csproj" />
+    </ItemGroup>
+
 </Project>

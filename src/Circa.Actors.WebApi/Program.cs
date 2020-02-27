@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Solari.Titan.DependencyInjection;
 
 namespace Circa.Actors.WebApi
 {
@@ -21,6 +22,6 @@ namespace Circa.Actors.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).UseTitanWithDefaults();
     }
 }
