@@ -24,11 +24,19 @@ namespace Circa.Actors.Application
             _logger = logger;
         }
 
-        public async Task<CommonResponse<ObjectId>> Insert(InsertPersonDto dto)
+        public async Task<CommonResponse<string>> Insert(InsertPersonDto dto)
         {
-            _logger.Information("Inserting a new person");
+            _logger.Information("Inserting a new person", enrich => enrich.WithProperty("person.name", dto.Name));
+            //TODO validate person email.
             CommonResponse<Person> result = await _personRepository.AddPerson(_personOperations.Insert(dto));
-            return result.ToNewGenericType(result.HasErrors ? CallistoConstants.ObjectIdDefaultValue : result.Result.Id, true);
+            if (result.HasErrors)
+            {
+                //TODO Log error messages.
+                _logger.Error("There was a error while inserting the document", enrich => enrich.WithProperty("error.message", "message"));
+            }
+
+            _logger.Information("Inserted new person on circa-actors database", enrich => enrich.WithProperty("document.id", result.Result.Id));
+            return result.ToNewGenericType(result.HasErrors ? "Error creating a new person" : "Person created", true);
         }
     }
 }

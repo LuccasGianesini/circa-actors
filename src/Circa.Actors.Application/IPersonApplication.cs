@@ -7,6 +7,6 @@ namespace Circa.Actors.Application
 {
     public interface IPersonApplication
     {
-        Task<CommonResponse<ObjectId>> Insert(InsertPersonDto dto);
+        Task<CommonResponse<string>> Insert(InsertPersonDto dto);
     }
 }

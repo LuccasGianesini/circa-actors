@@ -3,6 +3,8 @@ using Circa.Actors.Application;
 using Circa.Actors.Domain.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using OpenTracing.Tag;
+using Solari.Deimos;
 using Solari.Vanth;
 
 namespace Circa.Actors.WebApi.Controllers
@@ -12,18 +14,27 @@ namespace Circa.Actors.WebApi.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonApplication _application;
+        private readonly IDeimosTracer _tracer;
 
-        public PersonController(IPersonApplication application) { _application = application; }
+        public PersonController(IPersonApplication application, IDeimosTracer tracer)
+        {
+            _application = application;
+            _tracer = tracer;
+        }
 
         [HttpPost]
         public async Task<IActionResult> Add(InsertPersonDto dto)
         {
-            CommonResponse<ObjectId> rs = await _application.Insert(dto);
-            if (rs.HasErrors)
+            using (DeimosTracingDescriptor scope = _tracer.OpenScopeFromContext("inserting-person", HttpContext.Request.Headers))
             {
-                return BadRequest(rs);
+                scope.Enrich.Tag(Tags.HttpMethod, "POST");
+                CommonResponse<string> rs = await _application.Insert(dto);
+                if (rs.HasErrors)
+                {
+                    return BadRequest(rs);
+                }
+                return Ok(rs);    
             }
-            return Ok(rs.Result);
         }
     }
 }

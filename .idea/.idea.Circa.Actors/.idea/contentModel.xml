@@ -76,7 +76,6 @@
           <e p="Circa.Actors.WebApi.csproj" t="IncludeRecursive" />
           <e p="Controllers" t="Include">
             <e p="PersonController.cs" t="Include" />
-            <e p="WeatherForecastController.cs" t="Include" />
           </e>
           <e p="dm" t="Include" />
           <e p="obj" t="ExcludeRecursive">
