@@ -9,6 +9,7 @@
         <e p="Circa.Actors.Application" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="Circa.Actors.Application.csproj" t="IncludeRecursive" />
+          <e p="Helper.cs" t="Include" />
           <e p="IPersonApplication.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -77,7 +78,6 @@
           <e p="Controllers" t="Include">
             <e p="PersonController.cs" t="Include" />
           </e>
-          <e p="dm" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netcoreapp3.1" t="Include">

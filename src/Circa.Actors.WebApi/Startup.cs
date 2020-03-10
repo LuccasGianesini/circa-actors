@@ -1,27 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Circa.Actors.Application;
 using Circa.Actors.Domain;
 using Circa.Actors.Domain.Operations;
 using Circa.Actors.Infra;
-using Convey;
-using Convey.CQRS.Commands;
-using Convey.CQRS.Events;
-using Convey.CQRS.Queries;
-using Convey.MessageBrokers.CQRS;
-using Convey.MessageBrokers.RabbitMQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Solari.Callisto;
+using Solari.Callisto.Connector;
 using Solari.Callisto.Tracer;
 using Solari.Deimos;
 using Solari.Sol;
@@ -51,12 +40,12 @@ namespace Circa.Actors.WebApi
             services.AddScoped<PersonOperations>();
             services.AddScoped<IPersonApplication, PersonApplication>();
             services.AddSol(Configuration)
+                    .AddCallistoConnector()
+                    .AddDeimos(manager => manager.Register(new CallistoTracerPlugin()))
                     .AddCallisto(a => a.RegisterDefaultClassMaps()
                                        .RegisterDefaultConventionPack()
                                        .RegisterCollection<IPersonRepository, PersonRepository, Person>("person", ServiceLifetime.Scoped))
                     .AddTitan()
-                    .AddDeimos(plugin => plugin.Register(new CallistoTracerPlugin()))
-                    // .AddDeimos()
                     .AddVanth();
                   
             services.AddSwaggerGen(a => a.SwaggerDoc("v1", new OpenApiInfo
@@ -96,7 +85,7 @@ namespace Circa.Actors.WebApi
             {
                 options.RoutePrefix = "swagger";
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Circa Actors");
-            });
+            });    
 
             app.UseAuthorization();
 

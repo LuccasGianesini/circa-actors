@@ -6,20 +6,21 @@
 
     <ItemGroup>
       <PackageReference Include="Convey.Configurations.Vault" Version="0.4.226" />
-      <PackageReference Include="Convey.CQRS.Commands" Version="0.4.258" />
-      <PackageReference Include="Convey.CQRS.Events" Version="0.4.258" />
-      <PackageReference Include="Convey.CQRS.Queries" Version="0.4.258" />
-      <PackageReference Include="Convey.Discovery.Consul" Version="0.4.258" />
-      <PackageReference Include="Convey.MessageBrokers.CQRS" Version="0.4.258" />
-      <PackageReference Include="Convey.MessageBrokers.RabbitMQ" Version="0.4.258" />
-      <PackageReference Include="Convey.Secrets.Vault" Version="0.4.258" />
-      <PackageReference Include="Convey.Tracing.Jaeger.RabbitMQ" Version="0.4.258" />
-      <PackageReference Include="Solari.Callisto" Version="0.3.6" />
-      <PackageReference Include="Solari.Callisto.Tracer" Version="0.3.6" />
-      <PackageReference Include="Solari.Deimos" Version="0.2.8" />
-      <PackageReference Include="Solari.Deimos.CorrelationId" Version="0.2.8" />
-      <PackageReference Include="Solari.Titan" Version="0.2.4" />
-      <PackageReference Include="Solari.Vanth" Version="1.0.3" />
+      <PackageReference Include="Convey.CQRS.Commands" Version="0.4.273" />
+      <PackageReference Include="Convey.CQRS.Events" Version="0.4.273" />
+      <PackageReference Include="Convey.CQRS.Queries" Version="0.4.273" />
+      <PackageReference Include="Convey.Discovery.Consul" Version="0.4.273" />
+      <PackageReference Include="Convey.MessageBrokers.CQRS" Version="0.4.273" />
+      <PackageReference Include="Convey.MessageBrokers.RabbitMQ" Version="0.4.273" />
+      <PackageReference Include="Convey.Secrets.Vault" Version="0.4.273" />
+      <PackageReference Include="Convey.Tracing.Jaeger.RabbitMQ" Version="0.4.273" />
+      <PackageReference Include="Solari.Callisto" Version="0.3.8" />
+      <PackageReference Include="Solari.Callisto.Tracer" Version="0.3.8" />
+      <PackageReference Include="Solari.Deimos" Version="0.3.7" />
+      <PackageReference Include="Solari.Deimos.CorrelationId" Version="0.3.7" />
+      <PackageReference Include="Solari.Deimos.Elastic.RabbitMq" Version="0.3.7" />
+      <PackageReference Include="Solari.Titan" Version="0.2.18" />
+      <PackageReference Include="Solari.Vanth" Version="1.0.4" />
     </ItemGroup>
 
 </Project>

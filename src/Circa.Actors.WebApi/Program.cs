@@ -22,6 +22,6 @@ namespace Circa.Actors.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                }).UseTitanWithDefaults();
+                }).UseTitan();
     }
 }
